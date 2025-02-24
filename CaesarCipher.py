@@ -19,7 +19,19 @@ def encode(message, key):
     return secret
 
 def decode(message, key):
+    beta = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    message = message.upper()
+    secret = ""
+
+    for letter in message:
+        if (beta.find(letter) >= 0):
+            spot = (beta.find(letter) - key) % 26
+            secret = secret + beta[spot]
+        else:
+            secret = secret + letter
+    return secret
     #We will want to decode the message here.
+
     return "NOPE"
 
 def main():
